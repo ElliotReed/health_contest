@@ -1,0 +1,22 @@
+@import 'colors.scss';
+
+$border: 2px solid $primary-100;
+$border-radius: 1rem;
+
+$box-shadow: 0 2px 5px 0 rgba(63 28 63 /.18);
+
+$duration-sm: 160ms;
+$duration-md: 300ms;
+
+$ease: ease-in-out;
+
+$max-width: 70ch;
+
+$padding-box-sm: .49em .76em;
+$padding-box-md: .76em 1em;
+$padding-box-lg: 1em 1.49em;
+
+$spacer-xs: .49em;
+$spacer-sm: .76em;
+$spacer-md: 1em;
+$spacer-lg: calc($spacer-md * 2);

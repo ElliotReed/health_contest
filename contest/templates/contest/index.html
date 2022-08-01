@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<div class="contests__container leaderboard__container">
+
+  <section class="contests">
+    <h1 class="heading">Contests</h1>
+
+    <ul class="contest__list">
+      {% for participant_contest in participant_contests %}
+
+      <li>
+        <form class="contest__form" action="#" method="POST">
+          {% csrf_token %}
+
+          <input data-contest type="hidden" id="{{participant_contest.id}}" name="{{participant_contest.contest.name}}"
+            value={{participant_contest.score}} />
+          <label>{{participant_contest.contest}}</label>
+
+          <footer>
+            <button class="button" type="button" name="decrement" onclick="handleClick(event);">
+              <span class="material-icons">remove</span>
+            </button>
+            <span class="contest-score">{{participant_contest.score}}</span>
+            <button class="button" type="button" name="increment" onclick="handleClick(event);">
+              <span class="material-icons">add</span>
+            </button>
+          </footer>
+
+        </form>
+      </li>
+
+      {% endfor %}
+    </ul>
+
+    <script>
+      function handleClick(event) {
+        form = event.target.closest('form');
+        name = event.target.name;
+        input = form.querySelector('[data-contest]');
+        value = parseInt(input.value);
+        if (name == 'increment') {
+          input.value = value + 1;
+        }
+        if (name == 'decrement') {
+          if (!value > 0) {
+            return;
+          }
+          input.value = value - 1;
+        }
+        form.submit();
+      }
+    </script>
+
+  </section>
+
+  <section class="leaderboard">
+    <h2 class="heading">Leaderboard</h2>
+
+    <ol class="leaderboard__list">
+      {% for score in scores %}
+
+      <li>
+        <div class="leaderboard__item-container">
+          <span class="leaderboard__participant">{{score.username}}</span>
+          <span class="leaderboard__score-total">{{score.total}}pts</span>
+          <span class="material-icons star">star</span>
+        </div>
+      </li>
+
+      {% endfor %}
+    </ol>
+
+  </section>
+
+</div>
+
+{% else %}
+
+<div class="authorize-container">
+  <section class="authorize">
+    <a href="{% url 'account:login' %}">Sign In</a>
+    <p>Or</p>
+    <a href="{% url 'account:register' %}">Create an account </a>
+    <p>to enter contests</p>
+  </section>
+</div>
+
+{% endif %}
+
+{% endblock content %}

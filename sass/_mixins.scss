@@ -1,0 +1,176 @@
+@import 'variables.scss';
+@import 'colors.scss';
+
+@mixin heading {
+  font-size: $fs-sm;
+  font-weight: $fw-lg;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: $neutral-100;
+  margin: $spacer-lg 0;
+  border-radius: $border-radius;
+  background: $primary-100;
+  padding: $padding-box-md;
+}
+
+@mixin common-link-button {
+  display: inline-block;
+  color: $neutral-100;
+  border: $border;
+  border-radius: 100vmax;
+  padding: $padding-box-lg;
+  background-color: $primary-500;
+  transition-property: color, backgound;
+  transition-duration: $duration-sm;
+  transition-timing-function: $ease;
+
+  &:hover,
+  &:focus {
+    color: $neutral-100;
+    background: $primary-600;
+    cursor: pointer;
+  }
+
+  &:active {
+    color: $primary-900;
+    background: $neutral-100;
+  }
+}
+
+@mixin button {
+  @include common-link-button;
+
+}
+
+@mixin link-as-button {
+  @include common-link-button;
+
+}
+
+@mixin container {
+  margin: 0 auto;
+  max-width: $max-width;
+}
+
+@mixin flow {
+  &>*+* {
+    margin-top: $spacer-md;
+  }
+}
+
+@mixin focus {
+  outline: 1px dashed $primary-100;
+  outline-offset: .18rem;
+}
+
+@mixin link {
+  $underline-height: 1px;
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+  transition-property: color;
+  transition-duration: $duration-sm;
+  transition-timing-function: $ease;
+
+  &:link {
+    color: $primary-900;
+  }
+
+  &:visited {
+    color: $primary-900;
+  }
+
+  &:focus {
+    border-bottom: $underline-height solid;
+  }
+
+  &:hover {
+    border-bottom: $underline-height solid;
+  }
+
+  &:active {
+    color: $primary-500;
+  }
+}
+
+@mixin link-cancel {
+  $underline-height: 0px;
+  outline: none;
+  text-decoration: none;
+  padding: 0;
+  transition-property: color;
+  transition-duration: $duration-sm;
+  transition-timing-function: $ease;
+
+  &:link {
+    color: inherit;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:focus {
+    border-bottom: $underline-height solid;
+  }
+
+  &:hover {
+    border-bottom: $underline-height solid;
+  }
+
+  &:active {
+    color: inherit;
+  }
+}
+
+@mixin form {
+  $tight-margin: 0.29em;
+  border-radius: $border-radius;
+  @include flow;
+  padding: $spacer-md;
+
+  label {
+    display: block;
+    font-size: $fs-sm;
+    font-weight: $fs-lg;
+    margin-bottom: $tight-margin;
+  }
+
+  input,
+  textarea {
+    display: block;
+    border: $border;
+    border-radius: $border-radius;
+    padding: $padding-box-md;
+  }
+
+  textarea {
+    resize: none;
+    max-width: 76%;
+    display: block;
+    columns: '20';
+  }
+
+  input[type='file'] {
+    margin-top: $tight-margin;
+  }
+
+  input[type='submit'] {
+    @include button
+  }
+
+  .form-group {
+    border: 1px solid transparent;
+  }
+
+  .helptext {
+    font-size: $fs-sm;
+    padding: $tight-margin;
+  }
+
+  .error {
+    color: $primary-500;
+    margin-bottom: $tight-margin;
+  }
+
+}

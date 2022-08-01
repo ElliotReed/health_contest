@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load placeholder %}
+
+{% block title %}Create Account{% endblock title %}
+
+{% block content %}
+<section class="register">
+
+  <div class="">
+    <form class="form" method="POST" action="">
+      {% include 'form_fields.html' %}
+      <button class="button" type="submit">Register</button>
+      <p>Already have an account?</p>
+      <a href="{% url 'account:login' %}">Sign In</a>
+    </form>
+  </div>
+
+</section>
+{% endblock %}

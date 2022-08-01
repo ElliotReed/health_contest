@@ -125,7 +125,7 @@ venv.bak/
 dmypy.json
 
 # Custom
-user.txt
+users.md
 sqldiff.exe
 sqlite3_analyzer.exe
 sqlite3.exe

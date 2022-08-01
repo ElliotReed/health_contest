@@ -1,0 +1,295 @@
+@import 'colors.scss';
+@import 'typography.scss';
+@import 'variables.scss';
+@import 'mixins.scss';
+
+
+// #region Element styles **********
+html {
+  font-size: calc(15px + 0.390625vw);
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  font-family: $font-family;
+  background-color: $neutral-100;
+  color: $neutral-900;
+}
+
+*:focus {
+  @include focus
+}
+
+a {
+  @include link
+}
+
+button {
+  @include button;
+}
+
+// #endregion Element styles **********
+
+.main {
+  position: relative;
+  flex: 1 0 100%;
+}
+
+// #region Component styles **********
+// #region ********** Authorize styles **********
+.authorize-container {
+  @include container;
+  padding: $spacer-md;
+  margin-top: 5rem;
+}
+
+.authorize {
+  padding: $spacer-lg;
+  background: $neutral-500;
+  border-radius: $border-radius;
+  text-align: center;
+  @include flow;
+
+  &>a {
+    @include link-as-button;
+  }
+}
+
+// #endregion ********** Authorize styles **********
+
+// #region ********** Header styles **********
+.site__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  color: $neutral-100;
+  background: $primary-500;
+  padding: $padding-box-md;
+}
+
+.site__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacer-xs;
+  font-weight: $fw-lg;
+  text-decoration: none;
+  @include link-cancel;
+}
+
+.site__nav-list {
+  display: flex;
+}
+
+.user {
+  position: relative;
+}
+
+.user__menu {
+  position: absolute;
+  top: calc(100% + .29rem);
+  right: 0;
+  visibility: hidden;
+  @include flow;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  background: $neutral-100;
+  padding: $padding-box-md;
+  opacity: 0;
+  transform: translateY(-1em);
+  transition: opacity $duration-md ease-in-out, transform $duration-md ease-in-out;
+  pointer-events: none;
+  z-index: 100;
+
+  li {
+    color: $primary-900;
+
+    a {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: $spacer-sm;
+      white-space: nowrap;
+      @include link-cancel;
+
+      &:hover,
+      &:focus {
+        font-weight: $fw-md;
+      }
+
+      span.material-icons {
+        opacity: .49;
+      }
+    }
+  }
+}
+
+.user.active>*+.user__menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.user__avatar-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: transparent;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: inherit;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  span {
+    color: $primary-900;
+    font-size: 1.76rem;
+    pointer-events: none;
+  }
+}
+
+.user__avatar {
+  $avatar-size: 2.29rem;
+  width: $avatar-size;
+  height: $avatar-size;
+  border: $border;
+  border-radius: 100vmax;
+  pointer-events: none;
+
+  &.material-icons {
+    font-size: $avatar-size;
+  }
+}
+
+// #endregion ********** Header styles **********
+
+// #region ********** Contest page styles **********
+.contests__container.leaderboard__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: $spacer-lg;
+  @include container;
+  padding: $spacer-md;
+}
+
+.contests {
+  .heading {
+    @include heading;
+  }
+}
+
+.contest__list {
+  padding-left: calc($spacer-md * 1.76);
+  @include flow;
+}
+
+.contest__form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $spacer-md;
+
+  label {
+    font-size: $fs-lg;
+  }
+
+  footer {
+    .contest-score {
+      display: inline-block;
+      font-weight: $fw-lg;
+      margin: 0 .49em;
+    }
+
+    .button {
+      $button-size: 3em;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: $button-size;
+      height: $button-size;
+      color: $primary-500 ;
+      border-radius: 100vmax;
+      background-color: $neutral-100;
+
+      .material-icons {
+        font-size: $fs-md;
+        font-weight: $fw-md;
+        pointer-events: none;
+      }
+    }
+  }
+
+
+}
+
+.leaderboard {
+  .heading {
+    @include heading;
+  }
+}
+
+.leaderboard__list {
+  padding-left: calc($spacer-md * 1.76);
+  list-style: revert;
+  @include flow;
+}
+
+.leaderboard__item-container {
+  display: flex;
+  align-items: center;
+  gap: $spacer-sm;
+}
+
+.leaderboard__participant {
+  font-weight: $fw-md;
+  color: $primary-900;
+}
+
+.leaderboard__score-total {
+  font-weight: $fw-lg;
+}
+
+.star {
+  color: $primary-500;
+}
+
+
+// #endregion ********** Contest page styles **********
+
+// #endregion Component styles **********
+
+.profile {
+  @include container;
+
+  .form {
+    @include form;
+  }
+}
+
+.register {
+  @include container;
+
+  .form {
+    @include form;
+  }
+}
+
+.login {
+  @include container;
+
+  .form {
+    @include form;
+  }
+}

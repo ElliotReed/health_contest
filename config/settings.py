@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "whitenoise.runserver_nostatic",
-    "core",
+    "contest",
+    "account",
 ]
 
 MIDDLEWARE = [
@@ -87,6 +88,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
+AUTH_USER_MODEL = "account.UserAccount"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
