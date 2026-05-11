@@ -1,10 +1,38 @@
-$neutral-100: hsl(300, 40%, 98%);
-$neutral-500: hsl(300, 9%, 76%);
-$neutral-900: hsl(300, 49%, 18%);
+$white: #fcf8fc;
+$black: invert($white);
+$neutral: mix($black, $white, 25);
+$neutral: #e9e9ed;
 
-$primary-100: hsl(300, 49%, 76%);
-$primary-500: hsl(300, 49%, 49%);
-$primary-600: hsl(300, 29%, 49%);
-$primary-900: hsl(300, 49%, 29%);
-
+$primary: hsl(300, 49%, 49%);
 $seconday: hsl(120, 50%, 50%);
+
+$primary-100: tint($primary, 76%);
+$primary-200: tint($primary, 47%);
+$primary-300: tint($primary, 29%);
+$primary-400: tint($primary, 18%);
+$primary-500: $primary;
+$primary-600: shade($primary, 18%);
+$primary-700: shade($primary, 29%);
+$primary-800: shade($primary, 47%);
+$primary-900: shade($primary, 76%);
+
+$neutral-100: tint($neutral, 76%);
+$neutral-200: tint($neutral, 47%);
+$neutral-300: tint($neutral, 29%);
+$neutral-400: tint($neutral, 18%);
+$neutral-500: $neutral;
+$neutral-600: shade($neutral, 18%);
+$neutral-700: shade($neutral, 29%);
+$neutral-800: shade($neutral, 47%);
+$neutral-900: shade($neutral, 76%);
+
+
+@function tint($color, $percentage) {
+  $tintWhite: scale-color($color, $lightness: 76%);
+  @return mix($tintWhite, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  $tintBlack: scale-color($color, $lightness: -76%);
+  @return mix($tintBlack, $color, $percentage);
+}

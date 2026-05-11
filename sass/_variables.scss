@@ -3,20 +3,44 @@
 $border: 2px solid $primary-100;
 $border-radius: 1rem;
 
-$box-shadow: 0 2px 5px 0 rgba(63 28 63 /.18);
+$box-shadow: 0 2px 5px 0 rgba(34 34 34 /.18);
 
 $duration-sm: 160ms;
-$duration-md: 300ms;
+$duration-md: 320ms;
 
 $ease: ease-in-out;
 
 $max-width: 70ch;
 
-$padding-box-sm: .49em .76em;
+$padding-box-sm: .47em .76em;
 $padding-box-md: .76em 1em;
-$padding-box-lg: 1em 1.49em;
+$padding-box-lg: 1em 1.47em;
 
-$spacer-xs: .49em;
+$spacer-xs: .47em;
 $spacer-sm: .76em;
 $spacer-md: 1em;
-$spacer-lg: calc($spacer-md * 2);
+$spacer-lg: calc($spacer-md * 1.618);
+
+$sizes: (
+  000: 0.12,
+  100: 0.18,
+  200: 0.29,
+  300: 0.47,
+  400: 0.76,
+  500: 1,
+  600: 1.618,
+  700: 2.618,
+  800: 4.236,
+  900: 6.854,
+  1000: 11.089,
+);
+
+@function get-size($keys...) {
+  $value: $sizes;
+
+  @each $key in $keys {
+    $value: map-get($value, $key);
+  }
+
+  @return $value;
+}

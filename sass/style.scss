@@ -17,8 +17,8 @@ body {
   width: 100%;
   min-height: 100%;
   font-family: $font-family;
-  background-color: $neutral-100;
-  color: $neutral-900;
+  background-color: $white;
+  color: $black;
 }
 
 *:focus {
@@ -68,7 +68,7 @@ button {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  color: $neutral-100;
+  color: $white;
   background: $primary-500;
   padding: $padding-box-md;
 }
@@ -95,35 +95,36 @@ button {
   top: calc(100% + .29rem);
   right: 0;
   visibility: hidden;
-  @include flow;
   box-shadow: $box-shadow;
   border-radius: $border-radius;
-  background: $neutral-100;
-  padding: $padding-box-md;
+  background: $white;
   opacity: 0;
   transform: translateY(-1em);
   transition: opacity $duration-md ease-in-out, transform $duration-md ease-in-out;
+  overflow: hidden;
   pointer-events: none;
   z-index: 100;
 
   li {
     color: $primary-900;
 
-    a {
+    & a {
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
       gap: $spacer-sm;
       white-space: nowrap;
       @include link-cancel;
+      padding: $padding-box-md;
 
       &:hover,
       &:focus {
-        font-weight: $fw-md;
+        color: $white;
+        background: $primary-100;
       }
 
       span.material-icons {
-        opacity: .49;
+        opacity: .47;
       }
     }
   }
@@ -136,11 +137,11 @@ button {
   pointer-events: auto;
 }
 
-.user__avatar-button {
+button.user__avatar-button {
   display: flex;
   align-items: center;
-  border: none;
   background: transparent;
+  padding: 0;
 
   &:hover,
   &:focus,
@@ -201,9 +202,7 @@ button {
   align-items: center;
   gap: $spacer-md;
 
-  label {
-    font-size: $fs-lg;
-  }
+
 
   footer {
     .contest-score {
@@ -220,13 +219,18 @@ button {
       width: $button-size;
       height: $button-size;
       color: $primary-500 ;
+      border-color: $primary-500;
       border-radius: 100vmax;
-      background-color: $neutral-100;
+      background: $white;
 
       .material-icons {
-        font-size: $fs-md;
+        font-size: $fs-lg;
         font-weight: $fw-md;
         pointer-events: none;
+      }
+
+      &:hover {
+        background: $primary-100;
       }
     }
   }

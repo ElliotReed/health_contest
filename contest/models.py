@@ -13,10 +13,28 @@ class ContestType(models.Model):
 
 class Contest(models.Model):
     name = models.CharField(blank=True, max_length=150)
+    # duration
+    prize = models.CharField(max_length=255, null=True, blank=True)
     contest_type = models.ForeignKey(ContestType, on_delete=PROTECT)
 
     def __str__(self):
         return self.name
+
+
+class ScoreMethod(models.Model):
+    method = models.CharField(blank=True, max_length=150)
+
+    def __str__(self):
+        return self.method
+
+
+class ContestRules(models.Model):
+    contest = models.ForeignKey(Contest, on_delete=PROTECT)
+    rule = models.CharField(blank=True, max_length=150)
+    score_method = models.ForeignKey(ScoreMethod, on_delete=CASCADE)
+
+    def __str__(self):
+        return self.rule
 
 
 class ParticipantContest(models.Model):
@@ -31,11 +49,9 @@ class ParticipantContest(models.Model):
         return f"{self.contest.name}, {self.participant.username}"
 
 
-class WeeklyScore(models.Model):
-    weekly_score = models.IntegerField()
-    created_at = models.DateField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
-    user = models.ForeignKey(UserAccount, on_delete=CASCADE)
+class ContestRound(models.Model):
+    contest = models.ForeignKey(Contest, on_delete=PROTECT)
+    participant = models.ForeignKey(UserAccount, on_delete=CASCADE)
 
     def __str__(self):
-        return self.weekly_score
+        return self.contest.name

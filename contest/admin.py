@@ -1,6 +1,13 @@
 from django.contrib import admin
 
-from .models import ContestType, Contest, ParticipantContest, WeeklyScore
+from .models import (
+    Contest,
+    ContestRound,
+    ContestRules,
+    ContestType,
+    ParticipantContest,
+    ScoreMethod,
+)
 
 
 class ParticipantContestAdmin(admin.ModelAdmin):
@@ -18,7 +25,9 @@ class ParticipantContestAdmin(admin.ModelAdmin):
     get_user.admin_order_field = "participant__username"
 
 
-admin.site.register(ContestType)
 admin.site.register(Contest)
+admin.site.register(ContestRound)
+admin.site.register(ContestRules)
+admin.site.register(ContestType)
 admin.site.register(ParticipantContest, ParticipantContestAdmin)
-admin.site.register(WeeklyScore)
+admin.site.register(ScoreMethod)

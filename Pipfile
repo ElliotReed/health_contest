@@ -8,8 +8,9 @@ django = "*"
 pillow = "*"
 whitenoise = "*"
 python-decouple = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
+python_version = "3.12"
