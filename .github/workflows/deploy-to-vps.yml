@@ -1,4 +1,4 @@
-name: Deploy Django App to Production VPS
+name: Deploy to Production VPS
 on:
   push:
     branches: [main]
