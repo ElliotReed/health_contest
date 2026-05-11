@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
+gunicorn = "*"
 pillow = "*"
 whitenoise = "*"
 python-decouple = "*"
