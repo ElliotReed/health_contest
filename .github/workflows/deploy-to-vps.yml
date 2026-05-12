@@ -26,7 +26,7 @@ jobs:
             pipenv install --deploy
             pipenv run python manage.py migrate --noinput
             pipenv run python manage.py collectstatic --noinput
-            sudo /bin/systemctl restart ${{ env.SITE_NAME }}.gunicorn
+            sudo systemctl restart ${{ env.SITE_NAME }}.gunicorn
           EOF
       - name: Deployment summary
         run: |
