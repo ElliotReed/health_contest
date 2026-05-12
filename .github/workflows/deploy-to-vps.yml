@@ -20,7 +20,7 @@ jobs:
         run: ssh-keyscan ${{ env.VPS_HOST }} >> ~/.ssh/known_hosts
       - name: Deploy
         run: |
-          ssh ${{ env.VPS_USER }}@${{ env.VPS_HOST }} << 'EOF'
+          ssh ${{ env.VPS_USER }}@${{ env.VPS_HOST }} bash -i  << 'EOF'
             cd ~/apps/${{ env.SITE_NAME }}
             git pull origin main
             pipenv install --deploy
